@@ -23,8 +23,11 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.0.0'
   spec.extra_rdoc_files = ['README.md', 'LICENSE.md']
   spec.rdoc_options = ['--line-numbers', '--inline-source', '--title', 'twilio-ruby', '--main', 'README.md']
-
-  spec.add_dependency('jwt', '>= 1.5', '<= 2.5')
+  # jwt dependency is purposefully reduced here to its lower version as
+  # we can not update jwt in Realvolve application at this moment as
+  # other gems like oauth2 has strict dependency on current version of jwt gem
+  # in Realvolve  
+  spec.add_dependency('jwt', '~>0.1.8')
   spec.add_dependency('nokogiri', '>= 1.6', '< 2.0')
   spec.add_dependency('faraday', '~>0.9')
   spec.add_dependency('jruby-openssl', '>= 0.9.6') if RUBY_PLATFORM == 'java'
